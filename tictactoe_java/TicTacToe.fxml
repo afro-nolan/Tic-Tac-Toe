@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,35 +15,46 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <TitledPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" text="Choose Player">
+            <TitledPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" text="Choose Player">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;">
                      <children>
-                        <RadioButton fx:id="button_x" mnemonicParsing="false" onAction="#button_x_pressed" selected="true" style="-fx-background-color: white;" text="X">
+                        <RadioButton fx:id="button_x" mnemonicParsing="false" onAction="#button_x_pressed" selected="true" style="-fx-background-color: black;" text="X" textFill="WHITE">
                            <toggleGroup>
                               <ToggleGroup fx:id="players" />
                            </toggleGroup>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="button_o" mnemonicParsing="false" onAction="#button_o_pressed" style="-fx-background-color: white;" text="O" toggleGroup="$players" />
+                        <RadioButton fx:id="button_o" mnemonicParsing="false" onAction="#button_o_pressed" style="-fx-background-color: black;" text="O" textFill="WHITE" toggleGroup="$players">
+                           <font>
+                              <Font size="18.0" />
+                           </font></RadioButton>
                      </children>
                   </VBox>
                </content>
+               <effect>
+                  <Blend />
+               </effect>
             </TitledPane>
-            <Label fx:id="instructions" prefWidth="400.0" text="Label">
+            <Label fx:id="instructions" prefWidth="400.0" text="Label" textFill="#fff8f8">
                <padding>
                   <Insets left="8.0" />
                </padding>
+               <font>
+                  <Font name="Apple Casual" size="35.0" />
+               </font>
             </Label>
          </children>
       </HBox>
    </top>
    <center>
-      <GridPane fx:id="gridPane" gridLinesVisible="true" BorderPane.alignment="CENTER">
+      <GridPane fx:id="gridPane" gridLinesVisible="true" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,47 +66,47 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="button00" mnemonicParsing="false" onAction="#button00pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button">
+            <Button fx:id="button00" mnemonicParsing="false" onAction="#button00pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button01" mnemonicParsing="false" onAction="#button01pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="1">
+            <Button fx:id="button01" mnemonicParsing="false" onAction="#button01pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="1">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button02" mnemonicParsing="false" onAction="#button02pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="2">
+            <Button fx:id="button02" mnemonicParsing="false" onAction="#button02pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="2">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button10" mnemonicParsing="false" onAction="#button10pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.rowIndex="1">
+            <Button fx:id="button10" mnemonicParsing="false" onAction="#button10pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button11" mnemonicParsing="false" onAction="#button11pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="button11" mnemonicParsing="false" onAction="#button11pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button12" mnemonicParsing="false" onAction="#button12pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="button12" mnemonicParsing="false" onAction="#button12pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button20" mnemonicParsing="false" onAction="#button20pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.rowIndex="2">
+            <Button fx:id="button20" mnemonicParsing="false" onAction="#button20pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.rowIndex="2">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button21" mnemonicParsing="false" onAction="#button21pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="button21" mnemonicParsing="false" onAction="#button21pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>
             </Button>
-            <Button fx:id="button22" mnemonicParsing="false" onAction="#button22pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: white;" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="button22" mnemonicParsing="false" onAction="#button22pressed" prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: black;" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Apple Casual" size="43.0" />
                </font>

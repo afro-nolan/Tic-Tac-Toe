@@ -9,6 +9,8 @@ import javafx.scene.control.ToggleGroup;
 import java.util.ArrayList;
 import java.util.List;
 import java.security.SecureRandom;
+import java.util.Timer; 
+import java.util.TimerTask; 
 
 
 
@@ -83,11 +85,15 @@ public class TicTacToeController {
                 boolean result = player1_positions.contains(num);
                 if (result == true) {
                     check += 1;
+
                 }
+                //System.out.println(check);
             }
+            //System.out.println(check);
             if (check == 3) {
+            	//System.out.println(check);
+            	instructions.setText("You win!");
                 won = true;
-                instructions.setText("You win!");
                 refresh_game();
             }
         //check_tie(); Program freezing
@@ -258,6 +264,9 @@ public class TicTacToeController {
     //method for computer's move
     private void computer_move() {
         //random number geneator object
+        check_tie();
+        if (tie == false) {
+
         SecureRandom randomNumbers = new SecureRandom();
         //find free position
         //produce x and y random value between 0 and 2 inclusive
@@ -270,7 +279,6 @@ public class TicTacToeController {
         //if position
         if (x == 0) {
             if (y == 0) {
-                System.out.println(button00.getText());
                 if (button00.getText() == "") {
                     player2_positions.add(position);
                     button00.setText(player2);
@@ -312,7 +320,6 @@ public class TicTacToeController {
 
             }
         }
-        System.out.print("X is not 0");
         if (x == 1) {
             if (y == 0) {
                 if (button10.getText() == "") {
@@ -402,6 +409,9 @@ public class TicTacToeController {
 
     }
 
+        }
+
+
     //Method to check if computer won
     private void check_won_computer() {
         for (int[] sequence : win_moves) {
@@ -413,8 +423,9 @@ public class TicTacToeController {
                 }
             }
             if (check == 3) {
+            	//System.out.println("Computer wins!");
+            	instructions.setText("The Computer wins!");
                 won = true;
-                instructions.setText("The Computer wins!");
                 refresh_game();
             } 
             
@@ -426,6 +437,7 @@ public class TicTacToeController {
     private void check_tie() {
         if ((player1_positions.size() > 4) || (player2_positions.size() > 4)) {
             tie = true;
+            instructions.setText("It's a tie!");
             refresh_game();
 
         }
@@ -437,6 +449,10 @@ public class TicTacToeController {
 
     //will refresh if someone has won or its a tie
     private void refresh_game() {
+        player1_positions.clear();
+        player2_positions.clear();
+        won = false;
+        tie = false;
         button00.setText("");
         button01.setText("");
         button02.setText("");
@@ -446,10 +462,7 @@ public class TicTacToeController {
         button20.setText("");
         button21.setText("");
         button22.setText("");
-        player1_positions.clear();
-        player2_positions.clear();
         instructions.setText("Choose a Player!");
-
     }
 
     //Players
@@ -464,22 +477,19 @@ public class TicTacToeController {
     int[] positions = {00,01,02,10,11,12,20,21,22};
 
     //win positions
-    int[][] win_moves = {{01, 11, 21}, {02, 12, 22}, {03, 13, 23}, {01, 12, 23}, {01, 02, 03}, {11, 12, 13}, {21, 22, 23},
-                            {01, 12, 23}, {03, 12, 21}};
+    int[][] win_moves = {{00, 10, 20}, {01, 11, 21}, {02, 12, 22}, {00, 11, 22}, {00, 01, 02}, {10, 11, 12}, {20, 21, 22},
+                            {02, 11, 20}, {02, 12, 22}};
 
     //player1 positions
-    //int[] player1_positions = new int[9];
     List<Integer> player1_positions = new ArrayList<Integer>();
 
     //player2 positions
-    //int[] player2_positions = new int[9];
     List<Integer> player2_positions = new ArrayList<Integer>();
-
-    //List of buttons (squares)
-    Button[] buttons = {button00, button01, button02, button10, button11, button12, button20, button21, button22};
 
 
     public void initialize() {
+    	won = false;
+    	tie = false;
         button00.setText("");
         button01.setText("");
         button02.setText("");
